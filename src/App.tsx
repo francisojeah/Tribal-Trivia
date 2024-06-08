@@ -3,10 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "flowbite";
 import PageLoader from "./components/PageLoader";
 import React from "react";
-import { persistStore } from "redux-persist";
-import { store } from "./store/store";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
 import { AppContextType } from "./global/contexts";
 import { HelmetProvider } from "react-helmet-async";
 type Props = {
@@ -46,20 +42,88 @@ const App: React.FC<Props> = ({ assetMap }) => {
       // title = assetMap.initialContentMap.title!;
     }
 
-    let persister = persistStore(store);
     return (
       <AppContext.Provider value={{ baseUrl }}>
-          <Provider store={store}>
-            <PersistGate loading={null} persistor={persister}>
               <HelmetProvider>
                 <Router>
                   <Routes>
+                  <Route
+                      path="/"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          {React.createElement(
+                            lazy(() => import("../src/pages/Home/LandingPage"))
+                          )}
+                        </Suspense>
+                      }
+                    />
+                    <Route
+                      path="/info-game"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          {React.createElement(
+                            lazy(() => import("../src/pages/Home/InfoGamePage"))
+                          )}
+                        </Suspense>
+                      }
+                    />
                     <Route
                       path="/game"
                       element={
                         <Suspense fallback={<PageLoader />}>
                           {React.createElement(
                             lazy(() => import("../src/pages/Game/GameStartPage"))
+                          )}
+                        </Suspense>
+                      }
+                    />
+                    
+                    <Route
+                      path="/game/tribal-trivial"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          {React.createElement(
+                            lazy(() => import("../src/pages/Game/GameScreen"))
+                          )}
+                        </Suspense>
+                      }
+                    />
+                    <Route
+                      path="/learn"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          {React.createElement(
+                            lazy(() => import("../src/pages/Learn/CulturalInsightsPage"))
+                          )}
+                        </Suspense>
+                      }
+                    />
+                    <Route
+                      path="/learn/:tribe"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          {React.createElement(
+                            lazy(() => import("../src/pages/Learn/TribePage"))
+                          )}
+                        </Suspense>
+                      }
+                    />
+                    <Route
+                      path="/learn/:tribe/:category"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          {React.createElement(
+                            lazy(() => import("../src/pages/Learn/TribeCategoryPage"))
+                          )}
+                        </Suspense>
+                      }
+                    />
+                    <Route
+                      path="/game/:level"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          {React.createElement(
+                            lazy(() => import("../src/pages/Game/LevelScreen"))
                           )}
                         </Suspense>
                       }
@@ -77,8 +141,6 @@ const App: React.FC<Props> = ({ assetMap }) => {
                   </Routes>
                 </Router>
               </HelmetProvider>
-            </PersistGate>
-          </Provider>
       </AppContext.Provider>
     );
   };

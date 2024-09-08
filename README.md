@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+# Heritage Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Heritage Explorer** is an interactive platform developed to promote Nigerian cultural education through engaging, AI-driven content. Built during the **AI for Culture** hackathon, this project provides users with an immersive experience of Nigerian heritage, culture, and history through dynamic modules and games.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **AI Integration**: Utilizes AI models for generating educational content, image recognition, and text-to-speech functionalities.
+- **Interactive Learning**: Engaging modules and quizzes that help users explore and understand different aspects of Nigerian culture.
+- **Modern Frontend**: Developed using **Vite**, **React**, **TypeScript**, and **Tailwind CSS** for a responsive and efficient user interface.
+- **Database Management**: Uses **MongoDB** for storing user data and content.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Vite**: Fast and modern build tool.
+- **React**: JavaScript library for building user interfaces.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **TypeScript**: Type-safe JavaScript for writing robust code.
+- **AI Models**: For content generation, image recognition, and text-to-speech.
+- **MongoDB**: NoSQL database for flexible data management.
 
-- Configure the top-level `parserOptions` property like this:
+## How to Run
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/francisojeah/Tribal-Trivia.git
+   cd Tribal-Trivia
+   ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**
+   - Create a `.env` file in the root directory and add your environment-specific variables:
+   ```plaintext
+   MONGODB_URI=<your-mongodb-connection-string>
+   ```
+
+4. **Run the Application**
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the Application**
+   - The platform will be accessible at `http://localhost:5173`.
+  
+
+## Contribution
+
+Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.
+
+## License
+
+This project is open-source and available under the MIT License. See the [LICENSE](LICENSE) file for more information.
